@@ -155,12 +155,41 @@ npm takes a few minutes to show a new version, and the checks below lag behind i
   versions tab reads npm live; the score and the rest of the card follow at the next rebuild.
   `https://reactnative.directory/api/libraries?search=fold-layout` shows what it holds.
 
-### Required repository secret
+### Publishing credentials
 
-- `NPM_TOKEN` — an npm automation token with publish rights on the `@majornutcracker` scope.
-  It is the only publishing credential today, and it is meant to be replaced by npm Trusted
-  Publishing (OIDC from GitHub Actions) when the GitHub account is renamed, because the trusted
-  publisher pins the owner and repository.
+The workflow publishes through npm **Trusted Publishing** (OIDC from GitHub Actions). There
+is no npm token and no repository secret: npm trusts this repository's `release.yml` and
+nothing else.
+
+- **Trusted publisher** — on npmjs.com under the package's Settings → Trusted Publisher:
+  owner `majornutcracker`, repository `react-native-fold-layout`, workflow `release.yml`, no
+  environment, **Allow npm publish** enabled. All fields are case-sensitive, and a connection
+  cannot be edited once created — to change one, delete it and create a new one, which must
+  publish within 2 days or it expires.
+- **What the workflow needs** — the `id-token: write` permission, a GitHub-hosted runner, and
+  npm >= 11.5.1, which the `Upgrade npm for trusted publishing` step installs (Node 22 ships
+  npm 10).
+- **Publishing access** — set it to "Require two-factor authentication and disallow bypass 2fa
+  tokens", so a leaked token cannot publish. Trusted publishing is unaffected by that setting.
+
+**First release.** The package does not exist on npm yet, and the trusted publisher is
+configured from the package's own settings page. Check on npmjs.com whether a trusted
+publisher can be added before the first version exists; if it cannot, publish the first
+version by hand (`npm publish --access public`, with 2FA, from a clean checkout of the tagged
+commit), add the trusted publisher, and let the workflow publish every version after that.
+Remove `"private": true` from `package.json` before either.
+
+Renaming the GitHub account or the repository, or renaming `release.yml`, breaks publishing
+until the trusted publisher is recreated to match. Provenance is generated automatically;
+`--provenance` stays in the publish command only to make it explicit.
+
+To confirm who published a version:
+
+```sh
+npm view @majornutcracker/react-native-fold-layout _npmUser --prefer-online
+```
+
+A trusted publish shows `GitHub Actions` with a `trustedPublisher` entry.
 
 > Tip: the native/gradle files duplicate the version by hand, which is easy to forget. A future
 > improvement is to read the version from `package.json` in `build.gradle` and expose the JS
