@@ -9,6 +9,25 @@ Only the latest published minor release of
 | ------- | --------- |
 | 0.1.x   | ✅        |
 
+The package has no runtime dependencies. The Dependabot alerts on this
+repository come from development tooling and the example app, and do not reach
+an install of the package.
+
+## Verifying a release
+
+Versions are published only by this repository's
+[`release.yml`](./.github/workflows/release.yml) workflow, through npm Trusted
+Publishing (OIDC). The package refuses publishes made with an access token, and
+each version carries a provenance attestation linking it to the commit and
+workflow run that built it. To check the packages in your project:
+
+```sh
+npm audit signatures
+```
+
+On npmjs.com, a genuine version shows **GitHub Actions** as its publisher and a
+provenance badge.
+
 ## Reporting a vulnerability
 
 **Please do not open a public issue for security problems.**

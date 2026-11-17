@@ -42,9 +42,10 @@ regardless of whether the release is a patch, minor, or major. It is independent
 The release workflow does not look at these, and a stale value here publishes a perfectly
 good package. Refresh them when you remember.
 
-| File                                    | What to change                         | Note                                                |
-| --------------------------------------- | -------------------------------------- | --------------------------------------------------- |
-| `.github/ISSUE_TEMPLATE/bug_report.yml` | `placeholder:` under the version input | Shows a greyed-out example version in the bug form. |
+| File                                    | What to change                                          | Note                                                                                                                                         |
+| --------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.github/ISSUE_TEMPLATE/bug_report.yml` | `placeholder:` under the version input                  | Shows a greyed-out example version in the bug form.                                                                                          |
+| `SECURITY.md`                           | the "Supported versions" table (`0.2.x` ✅, `< 0.2` ❌) | **MINOR and MAJOR bumps only.** Only the latest minor gets security fixes, so a stale row tells users on the new minor they are unsupported. |
 
 ## Do NOT edit (auto-derived)
 
@@ -91,6 +92,9 @@ grep -RIn "1\.1\.0" \
 Every listed file should appear (and `versionCode` should be one higher than before).
 The last one is the [cosmetic reference](#cosmetic-references-nice-to-keep-current-never-release-blocking):
 the release does not check them, so this is the only place a stale one gets caught.
+
+`SECURITY.md` names the minor (`0.2.x`), not the full version, so this grep cannot see it.
+On a MINOR or MAJOR bump, check its "Supported versions" table by hand.
 
 ## Other version strings in this repo
 
@@ -177,7 +181,10 @@ configured from the package's own settings page. Check on npmjs.com whether a tr
 publisher can be added before the first version exists; if it cannot, publish the first
 version by hand (`npm publish --access public`, with 2FA, from a clean checkout of the tagged
 commit), add the trusted publisher, and let the workflow publish every version after that.
-Remove `"private": true` from `package.json` before either.
+Remove `"private": true` from `package.json` before either. If the first version is published by hand,
+edit "Verifying a release" in `SECURITY.md` to name the first version the workflow published
+(react-native-selectable-text says "Every version from 1.3.0 on"), since until then it claims
+every version comes from the workflow.
 
 Renaming the GitHub account or the repository, or renaming `release.yml`, breaks publishing
 until the trusted publisher is recreated to match. Provenance is generated automatically;
