@@ -1,0 +1,11 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["MajornutcrackerReactNativeFoldLayoutModule"]
+  },
+  "android": {
+    "modules": [
+      "com.majornutcracker.reactnativefoldlayout.MajornutcrackerReactNativeFoldLayoutModule"
+    ]
+  }
+}
