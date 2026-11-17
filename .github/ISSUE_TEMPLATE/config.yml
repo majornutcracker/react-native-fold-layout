@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or usage help
+    url: https://github.com/majornutcracker/react-native-fold-layout/discussions
+    about: Ask how to use the module, or discuss an idea before filing a request.
+  - name: Documentation
+    url: https://developer.majornutcracker.com/docs/react-native-fold-layout
+    about: Full API reference and guides.
+  - name: Report a security vulnerability
+    url: https://github.com/majornutcracker/react-native-fold-layout/security/advisories/new
+    about: Please report vulnerabilities privately, never as a public issue.

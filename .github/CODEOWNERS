@@ -1,0 +1,10 @@
+# Default owner for everything in this repository.
+* @majornutcracker @JoshuaPariona
+
+# Native sources: platform API changes (WindowManager, UIKit) need extra care.
+/ios/ @majornutcracker @JoshuaPariona
+/android/ @majornutcracker @JoshuaPariona
+
+# Release, CI, and versioning surface.
+/.github/workflows/ @majornutcracker @JoshuaPariona
+/docs/VERSION-UPDATE.md @majornutcracker @JoshuaPariona
