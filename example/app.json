@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "FoldLayout",
+    "slug": "react-native-fold-layout-example",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "scheme": "example",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.majornutcracker.reactnativefoldlayout.example"
+    },
+    "android": {
+      "predictiveBackGestureEnabled": false,
+      "package": "com.majornutcracker.reactnativefoldlayout.example"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
