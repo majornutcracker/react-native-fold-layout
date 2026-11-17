@@ -14,7 +14,7 @@
       "predictiveBackGestureEnabled": false,
       "package": "com.majornutcracker.reactnativefoldlayout.example"
     },
-    "plugins": ["expo-router"],
+    "plugins": ["expo-router", "expo-status-bar"],
     "experiments": {
       "typedRoutes": true
     }
