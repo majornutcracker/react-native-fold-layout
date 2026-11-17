@@ -1,0 +1,108 @@
+{
+  "name": "@majornutcracker/react-native-fold-layout",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fold-aware layout for React Native and Expo (iOS & Android): the fold and hinge regions in React Native coordinates, fold-safe views, and split, tabletop and book layouts for Android foldables and iPhone Duo.",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "type": "module",
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "build",
+    "src",
+    "!src/__tests__",
+    "android/build.gradle",
+    "android/src/main",
+    "ios/*.podspec",
+    "ios/*.swift",
+    "expo-module.config.json",
+    "CHANGELOG.md",
+    "docs",
+    "!docs/VERSION-UPDATE.md"
+  ],
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "prepare": "husky",
+    "configure": "expo-module configure",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module",
+    "open:ios": "xed example/ios",
+    "open:android": "open -a \"Android Studio\" example/android"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "expo-module",
+    "foldable",
+    "foldables",
+    "fold",
+    "hinge",
+    "posture",
+    "dual-screen",
+    "iphone-duo",
+    "galaxy-fold",
+    "pixel-fold",
+    "window-manager",
+    "jetpack-windowmanager",
+    "reserved-regions",
+    "layout",
+    "adaptive-layout",
+    "responsive",
+    "split-view",
+    "two-pane",
+    "tabletop",
+    "safe-area",
+    "ios",
+    "android"
+  ],
+  "repository": "https://github.com/majornutcracker/react-native-fold-layout",
+  "bugs": {
+    "url": "https://github.com/majornutcracker/react-native-fold-layout/issues"
+  },
+  "author": "Majornutcracker <joshiparsa@gmail.com> (https://github.com/majornutcracker)",
+  "license": "MIT",
+  "homepage": "https://developer.majornutcracker.com/docs/react-native-fold-layout",
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^30.0.0",
+    "@types/react": "~19.3.0",
+    "eslint": "^10.10.0",
+    "eslint-plugin-prettier": "^5.5.6",
+    "expo": "~58.0.26",
+    "expo-module-scripts": "~56.0.0",
+    "globals": "^17.12.0",
+    "husky": "^9.1.0",
+    "jest": "^30.5.1",
+    "jest-expo": "~58.0.15",
+    "lint-staged": "^17.5.0",
+    "prettier": "^3.9.6",
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.70.0"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "prettier --write",
+      "expo-module lint"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
